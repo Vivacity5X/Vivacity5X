@@ -1,0 +1,119 @@
+#include <iostream>
+#define SIZE 5
+using namespace std;
+class Queue{
+  public:
+    int items[SIZE],front,rear;
+    public:
+    Queue()
+    {
+        front=-1;
+        rear=-1;
+    }
+    bool isfull(){
+        if(front==0 && rear==SIZE-1){
+        return true;
+        }
+        else{
+        return false;
+        }
+    }
+    bool isempty(){
+        if(front==-1 ){
+        return true;
+            
+        }
+        else
+        {return false;
+        }
+    }
+    void enqu(int element){
+        if(isfull()){
+            cout<<"The que is full";
+        }
+        else{
+            if(front==-1){
+                front=0;
+            }
+            rear++;
+            items[rear]=element;
+            cout<<"inserted"<<endl;
+        }
+    }
+    int dequ(){
+        int element;
+        if(isempty()){
+            cout<<"is empty"<<endl;
+           return (-1); 
+        }
+        else{
+            element=items[front];
+            if(front>=rear){
+                front=-1;
+                rear=-1;
+            }
+            else{
+                front++;
+            }
+        cout<<"deleted"<<endl;
+            return (element);
+        }
+    
+        
+    }
+    void disp(){
+            int i;
+    if (isempty()) {
+      cout << endl<< "Empty Queue" << endl;
+    } 
+    else {
+      cout << endl<< "Front index-> " << front;
+      cout << endl<< "Items -> ";
+      for (i = front; i <= rear; i++)
+        cout << items[i] << "  ";
+      cout << endl<< "Rear index-> " << rear << endl;
+    }
+  }
+
+};
+int main() {
+    
+    Queue q;
+    int n;
+    int ele;
+    cout<<"1.insert"<<endl;
+    cout<<"2.delet"<<endl;
+    cout<<"3.displ"<<endl;
+    cout<<"4.exit"<<endl;
+    do{
+        cin>>n;
+    switch(n){
+        case 1 : {
+            cout<<"enter the element"<<endl;
+            cin>>ele;
+            q.enqu(ele);
+            break;
+        }
+        case 2 : {
+            q.dequ();
+            break;
+        }
+        case 3 :{
+            q.disp();
+            break;
+        }
+        case 4 : {
+            cout<<"exited"<<endl;
+            break;
+        }
+        default : {
+            cout<<"enter valid choice"<<endl;
+            
+        }
+    }
+    }while(n!=4);
+
+ 
+
+  return 0;
+}
